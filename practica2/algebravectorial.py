@@ -1,18 +1,18 @@
 import math
 
 class Vector:
-    def __init__(self, x, y, z):  # ← Corregido
+    def __init__(self, x, y, z):  
         self.x = x
         self.y = y
         self.z = z
 
-    def __add__(self, other):  # ← Corregido
+    def __add__(self, other):  
         return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
 
-    def __sub__(self, other):  # ← Corregido
+    def __sub__(self, other):  
         return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def __mul__(self, scalar):  # ← Corregido
+    def __mul__(self, scalar):  
         return Vector(self.x * scalar, self.y * scalar, self.z * scalar)
 
     def dot(self, other):
@@ -26,11 +26,11 @@ class Vector:
     def magnitude(self):
         return math.sqrt(self.x ** 2 + self.y ** 2 + self.z ** 2)
 
-    def __repr__(self):  # ← útil para imprimir vectores
+    def __repr__(self):  
         return f"Vector({self.x}, {self.y}, {self.z})"
 
 class AlgebraVectorial:
-    def __init__(self, a, b):  # ← Corregido
+    def __init__(self, a, b): 
         self.a = a
         self.b = b
 
@@ -48,7 +48,7 @@ class AlgebraVectorial:
         if method == 'cross':
             return self.a.cross(self.b).magnitude() == 0
         elif method == 'scalar':
-            # Prevenir división por cero
+            
             try:
                 return self.a.x / self.b.x == self.a.y / self.b.y == self.a.z / self.b.z
             except ZeroDivisionError:
@@ -61,7 +61,7 @@ class AlgebraVectorial:
     def componente(self):
         return self.a.dot(self.b) / self.b.magnitude()
 
-# Prueba
+
 a = Vector(1, 2, 3)
 b = Vector(4, 5, 6)
 
@@ -70,4 +70,5 @@ algebra = AlgebraVectorial(a, b)
 print("¿Son perpendiculares?", algebra.perpendicular())
 print("¿Son paralelos?", algebra.paralela())
 print("Proyección de a sobre b:", algebra.proyeccion())
+
 print("Componente de a en b:", algebra.componente())
